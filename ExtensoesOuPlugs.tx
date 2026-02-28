@@ -1,1 +1,3 @@
-extenção EditorConfig > gerar na pasta raiz o .EditorConfig
+extenção: EditorConfig > gerar na pasta raiz o .EditorConfig
+extenção: Tailwind css
+plugIn : npm i clsx depois instalar a extenção > clsxify-transformer-0.0.1.vsix
