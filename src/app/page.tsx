@@ -1,18 +1,13 @@
-import clsx from "clsx";
+import { Header } from "@/components/Header";
+
+//page.tsx (server) -> menu.tsx (server) -> link (client)
 
 export default function HomePage() {
+  console.log("HomePage");
+
   return (
-    <h1
-      className={clsx(
-        "text-xl",
-        "font-bold",
-        "text-emerald-500",
-        "hover:text-emerald-50",
-        "hover:bg-emerald-500",
-        "duration-1000",
-      )}
-    >
-      Testando
-    </h1>
+    <div>
+      <Header />
+    </div>
   );
 }
