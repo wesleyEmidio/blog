@@ -1,5 +1,5 @@
-extenção: EditorConfig > gerar na pasta raiz o .EditorConfig
-extenção: Tailwind css
+extenção: EditorConfig > gerar na pasta raiz o .EditorConfig BOTÃO DIREITO JÁ VAI APARECER ESSE CARA
+extenção: Tailwind css IMPORTANTE
 plugIn: npm i clsx depois instalar a extenção > clsxify-transformer-0.0.1.vsix
 
 02/03
