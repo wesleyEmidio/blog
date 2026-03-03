@@ -1,13 +1,23 @@
+import { Container } from "@/components/Container";
 import { Header } from "@/components/Header";
+import { PostsList } from "@/components/PostsList";
 import { SpinLoader } from "@/components/SpinLoader";
-import clsx from "clsx";
+import { Suspense } from "react";
 
 //page.tsx (server) -> menu.tsx (server) -> link (client)
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
-    <div>
-      <SpinLoader containerClasses={clsx("min-h-[500px]", "bg-amber-500")} />
-    </div>
+    <Container>
+      <Header></Header>
+
+      <Suspense fallback={<SpinLoader />}>
+        <PostsList />
+      </Suspense>
+
+      <footer>
+        <p className="text-6xl font-bold text-center py-8">Footer</p>
+      </footer>
+    </Container>
   );
 }
