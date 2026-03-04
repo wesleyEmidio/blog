@@ -1,29 +1,30 @@
 import { Container } from "@/components/Container";
 import { Header } from "@/components/Header";
+import { PostCoverImage } from "@/components/PostCoverImage";
 import { PostHeading } from "@/components/PostHeading";
 import { PostsList } from "@/components/PostsList";
 import { SpinLoader } from "@/components/SpinLoader";
-import Image from "next/image";
-import Link from "next/link";
 import { Suspense } from "react";
-
-//page.tsx (server) -> menu.tsx (server) -> link (client)
 
 export default async function HomePage() {
   return (
     <Container>
       <Header />
       <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">
-        <Link className="w-full h-full overflow-hidden rounded-xl" href="#">
-          <Image
-            className="w-full h-full object-cover group-hover:scale-105 transition"
-            src="/images/bryen_0.png"
-            width={1200}
-            height={72}
-            alt="Titulo do post"
-            priority
-          />
-        </Link>
+        <PostCoverImage
+          linkProps={{
+            href: "/post/teste",
+            className: "opacity-50",
+          }}
+          imageProps={{
+            width: 1200,
+            height: 72,
+            src: "/images/bryen_9.png",
+            alt: "alt da imagem",
+            priority: true,
+          }}
+        ></PostCoverImage>
+
         <div className="flex flex-col gap-4 sm:justify-center">
           <time
             className="text-slate-600 block text-sm/tight"
