@@ -5,9 +5,19 @@ plugIn: npm i clsx depois instalar a extenção > clsxify-transformer-0.0.1.vsix
 02/03
 {
 plugIn: npm i -D tsx
-EXEMPLO DE EXECUÇÃO DE ALGUM ARQUIVO > .\src\repositories\post\json-post-repository.ts
+EXEMPLO DE EXECUÇÃO DE ALGUM ARQUIVO > npx tsx .\src\repositories\post\json-post-repository.ts
 
 extenção: Code Runner
 olhar arquivo settings.json
+ "code-runner.clearPreviousOutput": true,
+  "code-runner.runInTerminal": true,
+  "code-runner.ignoreSelection": true,
+  "code-runner.executorMap": {
+    "typescript": "clear; npx tsx"
+  }
 }
 
+04/03
+{
+  extenção: npm install date-fns
+}
