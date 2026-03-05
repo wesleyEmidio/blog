@@ -15,7 +15,7 @@ export function Header() {
           "xl:text-7xl/normal sm:py-12",
         )}
       >
-        <Link href="#">The Blog</Link>
+        <Link href="/">The Blog</Link>
       </h1>
     </header>
   );
