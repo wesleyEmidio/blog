@@ -19,5 +19,13 @@ olhar arquivo settings.json
 
 04/03
 {
-  extenção: npm install date-fns
+  plugIn: npm install date-fns
+}
+
+06/03
+{
+  plugIn: npm install react-markdown
+  plugIn: npm install rehype-sanitize
+  plugIn: npm install remark-gfm
+  plugIn: npm install -D @tailwindcss/typography
 }
