@@ -29,3 +29,15 @@ olhar arquivo settings.json
   plugIn: npm install remark-gfm
   plugIn: npm install -D @tailwindcss/typography
 }
+
+10/03
+{
+   plugIn: npm i drizzle-orm better-sqlite3
+   plugIn: npm i -D @types/better-sqlite3 drizzle-kit
+}
+
+criar tabelas e atualizar tabelas do sqlite3
+{
+   npx drizzle-kit generate
+   npx drizzle-kit migrate
+}
