@@ -46,3 +46,8 @@ criar tabelas e atualizar tabelas do sqlite3
 {
   npm install lucide-react
 }
+
+16/03
+{
+  npm i react-toastify
+}
