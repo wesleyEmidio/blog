@@ -3,13 +3,11 @@
 import { drizzleDb } from "@/db/drizzle";
 import { postsTable } from "@/db/drizzle/schemas";
 import { postRepository } from "@/repositories/post";
-import { asyncDelay } from "@/utils/async-delay";
-import { logColor } from "@/utils/log-color";
 import { eq } from "drizzle-orm";
 import { revalidateTag } from "next/cache";
 
 export async function deletePostAction(id: string) {
-  logColor("" + id);
+  //TODO: checar login do usuário
 
   if (!id || typeof id !== "string")
     return {

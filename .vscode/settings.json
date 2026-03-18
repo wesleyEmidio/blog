@@ -5,7 +5,7 @@
   "debug.console.fontSize": 14,
   "terminal.integrated.fontSize": 14,
   "editor.glyphMargin": false,
-  "workbench.activityBar.location": "hidden", //default/hidden
+  "workbench.activityBar.location": "default", //default/hidden
   "editor.lineNumbers": "on",
   "files.eol": "\n", // Final de linha sempre será LF
   "workbench.editor.labelFormat": "short",

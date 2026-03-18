@@ -10,14 +10,15 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export function MenuAdmin() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setIsOpen(false);
+    //{eslint-disable-next-line react-hooks/exhaustive-deps}
   }, [pathname]);
 
   const navClasses = clsx(
