@@ -1,5 +1,6 @@
 import { findPublicPostBySlugCached } from "@/lib/post/queries/public";
 import Image from "next/image";
+import { normalizeImageUrl } from "@/utils/normalize-image-url";
 import { PostHeading } from "../PostHeading";
 import { PostDate } from "../PostDate";
 import { SafeMarkdown } from "../SafeMarkdown";
@@ -16,7 +17,7 @@ export async function SinglePost({ slug }: SinglePostProps) {
       <header className="group flex flex-col gap-4 mb-4">
         <Image
           className="rounded-xl"
-          src={post.coverImageUrl}
+          src={normalizeImageUrl(post.coverImageUrl)}
           width={1200}
           height={720}
           alt={post.title}

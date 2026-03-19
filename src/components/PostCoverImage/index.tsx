@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { normalizeImageUrl } from "@/utils/normalize-image-url";
 
 type PostCoverImageProps = {
   imageProps: React.ComponentProps<typeof Image>;
@@ -8,6 +9,11 @@ type PostCoverImageProps = {
 };
 
 export function PostCoverImage({ imageProps, linkProps }: PostCoverImageProps) {
+  const src =
+    typeof imageProps.src === "string"
+      ? normalizeImageUrl(imageProps.src)
+      : imageProps.src;
+
   return (
     <Link
       {...linkProps}
@@ -21,6 +27,7 @@ export function PostCoverImage({ imageProps, linkProps }: PostCoverImageProps) {
     >
       <Image
         {...imageProps}
+        src={src}
         className={clsx(
           "w-full",
           "h-full",
