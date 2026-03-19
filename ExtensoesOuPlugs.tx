@@ -61,3 +61,11 @@ criar tabelas e atualizar tabelas do sqlite3
 {
   extenção: TODO FREE
 }
+
+19/03
+{
+npm i zod
+npm install sanitize-html
+npm install -D @types/sanitize-html
+npm install uuid slugify
+}

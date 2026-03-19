@@ -25,13 +25,17 @@ export function ImageUploader() {
     const fileInput = fileInputRef.current;
     const file = fileInput?.files?.[0];
 
-    if (!file) return;
+    if (!file) {
+      setImgUrl("");
+      return;
+    }
 
     if (file.size > IMAGE_UPLOAD_MAX_SIZE) {
       const readableMaxSize = IMAGE_UPLOAD_MAX_SIZE / 1024;
       toast.error(`Imagem muito grande. Máx.: ${readableMaxSize}KB.`);
 
       fileInput.value = "";
+      setImgUrl("");
       return;
     }
 
@@ -56,7 +60,12 @@ export function ImageUploader() {
 
   return (
     <div className="flex flex-col gap-2 py-4">
-      <Button onClick={handleChooseFile} type="button" className="self-start">
+      <Button
+        onClick={handleChooseFile}
+        type="button"
+        className="self-start"
+        disabled={isUploading}
+      >
         <ImageUpIcon></ImageUpIcon>
         Selecionar Imagem
       </Button>
@@ -65,7 +74,7 @@ export function ImageUploader() {
         <div className="flex flex-col gap-4 py-4">
           <p>URL: {imgUrl}</p>
           {/* eslint-disable-next-line*/}
-          <img className="rounded-lg size-1" src={imgUrl} />
+          <img className="rounded-lg w-10 h-10" src={imgUrl} />
         </div>
       )}
 
@@ -76,6 +85,7 @@ export function ImageUploader() {
         name="file"
         type="file"
         accept="image/*"
+        disabled={isUploading}
       />
     </div>
   );

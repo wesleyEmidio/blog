@@ -1,0 +1,22 @@
+/*
+import { ZodError } from "zod";
+
+export function getZodErrorMessages<T>(error: ZodError<T>): string[] {
+  return Object.values(error)
+    .map((field) => {
+      if (Array.isArray(field)) return field;
+      return field?._errors || [];
+    })
+    .flat()
+    .filter(Boolean);
+}
+*/
+
+import z from "zod";
+
+export function getZodErrorMessages<T>(error: z.ZodError<T>): string[] {
+  const errors = z.flattenError(error);
+  const formErrors = errors.formErrors;
+  const fieldErrors = Object.values(errors.fieldErrors).flat() as string[];
+  return [...formErrors, ...fieldErrors];
+}
