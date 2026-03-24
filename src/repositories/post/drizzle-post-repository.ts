@@ -4,6 +4,9 @@ import { drizzleDb } from "@/db/drizzle";
 import { asyncDelay } from "@/utils/async-delay";
 import { postsTable } from "@/db/drizzle/schemas";
 import { eq } from "drizzle-orm";
+import dotenv from "dotenv";
+
+dotenv.config({ path: ".env.local" });
 
 const simulateWaitMs = Number(process.env.SIMULATE_WAIT_IN_MS) || 0;
 

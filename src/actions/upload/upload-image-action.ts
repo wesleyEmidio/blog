@@ -1,5 +1,6 @@
 "use server";
 
+import { verifyLoginSession } from "@/lib/login/manage-login";
 import { mkdir, writeFile } from "fs/promises";
 import { extname, resolve } from "path";
 
@@ -11,28 +12,31 @@ type UploadImageActionResult = {
 export async function uploadImageAction(
   formData: FormData,
 ): Promise<UploadImageActionResult> {
-  // TODO: Verificar se o usuário está logado
-
   const makeResult = ({ url = "", error = "" }) => ({ url, error });
 
+  const isAuthenticated = await verifyLoginSession();
+  if (!isAuthenticated) {
+    return makeResult({ error: "Faça login novamente." });
+  }
+
   if (!(formData instanceof FormData)) {
-    return makeResult({ error: "Dados inválidos" });
+    return makeResult({ error: "Dados inválidos." });
   }
 
   const file = formData.get("file");
 
   if (!(file instanceof File)) {
-    return makeResult({ error: "Arquivo inválido" });
+    return makeResult({ error: "Arquivo inválido." });
   }
 
   const uploadMaxSize =
     Number(process.env.NEXT_PUBLIC_IMAGE_UPLOAD_MAX_SIZE) || 921600;
   if (file.size > uploadMaxSize) {
-    return makeResult({ error: "Arquivo muito grande" });
+    return makeResult({ error: "Arquivo muito grande." });
   }
 
   if (!file.type.startsWith("image/")) {
-    return makeResult({ error: "Imagem inválida" });
+    return makeResult({ error: "Imagem inválida." });
   }
 
   const imageExtension = extname(file.name);
@@ -49,9 +53,10 @@ export async function uploadImageAction(
 
   await writeFile(fileFullPath, buffer);
 
-  const imgServerIrl =
-    process.env.IMAGE_SERVER_URL || "http://localhost:3000/uploads";
-  const url = `${imgServerIrl}/${uniqueImageName}`;
+  const uploadBaseUrl = (
+    process.env.IMAGE_SERVER_URL || `/${uploadDir}`
+  ).replace(/\/+$/, "");
+  const url = `${uploadBaseUrl}/${uniqueImageName}`;
 
   return makeResult({ url });
 }

@@ -2,6 +2,9 @@ import { PostModel } from "@/models/post/post-model";
 import { PostRepository } from "./post-repository";
 import { resolve } from "path";
 import { readFile, writeFile } from "fs/promises";
+import dotenv from "dotenv";
+
+dotenv.config({ path: ".env.local" });
 
 const simulateWaitMs = Number(process.env.SIMULATE_WAIT_IN_MS) || 0;
 

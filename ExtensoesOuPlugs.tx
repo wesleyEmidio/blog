@@ -69,3 +69,9 @@ npm install sanitize-html
 npm install -D @types/sanitize-html
 npm install uuid slugify
 }
+
+24/03
+{
+  npm i bcryptjs
+  npm i jose
+}
